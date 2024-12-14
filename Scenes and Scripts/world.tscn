@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://e1iv1m2r8c3d"]
+
+[ext_resource type="PackedScene" uid="uid://bbsmu0fgvtv67" path="res://Scenes and Scripts/Characters/Player/Player.tscn" id="1_hkc5q"]
+[ext_resource type="PackedScene" uid="uid://dkivuisd54dvy" path="res://Scenes and Scripts/Environment/Jungle/base_tree.tscn" id="2_5hu7k"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_hkc5q")]
+
+[node name="BaseTree" parent="." instance=ExtResource("2_5hu7k")]
+position = Vector2(100, 50)
