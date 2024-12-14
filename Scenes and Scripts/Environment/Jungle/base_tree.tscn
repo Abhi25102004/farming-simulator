@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkivuisd54dvy"]
+
+[ext_resource type="Script" path="res://Scenes and Scripts/Environment/Jungle/base_tree.gd" id="1_4w8yc"]
+[ext_resource type="Texture2D" uid="uid://coailcyntjk6n" path="res://Sunnyside_World_Assets/Elements/Plants/spr_deco_tree_01_strip4.png" id="1_jh703"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnbf1"]
+atlas = ExtResource("1_jh703")
+region = Rect2(0, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnj34"]
+atlas = ExtResource("1_jh703")
+region = Rect2(32, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itkqt"]
+atlas = ExtResource("1_jh703")
+region = Rect2(64, 0, 32, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5033d"]
+atlas = ExtResource("1_jh703")
+region = Rect2(96, 0, 32, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snvos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnbf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnj34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itkqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5033d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o107t"]
+
+[node name="BaseTree" type="Node2D" groups=["cut_tree"]]
+script = ExtResource("1_4w8yc")
+health = 20
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_snvos")
+
+[node name="BaseTreeHB" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="BaseTreeHB"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_o107t")
