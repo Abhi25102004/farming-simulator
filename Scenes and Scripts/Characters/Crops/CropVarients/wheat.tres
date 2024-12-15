@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://cgeq3y23wan0l"]
+
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_326rm"]
+[ext_resource type="Texture2D" uid="uid://btcs2euy3lp87" path="res://Sunnyside_World_Assets/Elements/Crops/wheat_01.png" id="1_h68mk"]
+[ext_resource type="Texture2D" uid="uid://x3pg1528pcog" path="res://Sunnyside_World_Assets/Elements/Crops/wheat_02.png" id="2_d0k3d"]
+[ext_resource type="Texture2D" uid="uid://4hithaqgyn6c" path="res://Sunnyside_World_Assets/Elements/Crops/wheat_03.png" id="3_t4i7g"]
+[ext_resource type="Texture2D" uid="uid://y6dvmvvljm3p" path="res://Sunnyside_World_Assets/Elements/Crops/wheat_04.png" id="4_mibem"]
+
+[resource]
+script = ExtResource("1_326rm")
+WaterRequire = 7.0
+GrowthTime = 14.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_h68mk"), ExtResource("2_d0k3d"), ExtResource("3_t4i7g"), ExtResource("4_mibem")])

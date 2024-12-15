@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://djkvg43ox66ke"]
+
+[ext_resource type="Texture2D" uid="uid://dsy2hl8yq57hq" path="res://Sunnyside_World_Assets/Elements/Crops/kale_01.png" id="1_4i2dv"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_ty40h"]
+[ext_resource type="Texture2D" uid="uid://7104qiy7g2p2" path="res://Sunnyside_World_Assets/Elements/Crops/kale_02.png" id="2_nxum6"]
+[ext_resource type="Texture2D" uid="uid://bvolyrcwl828g" path="res://Sunnyside_World_Assets/Elements/Crops/kale_03.png" id="3_tkywl"]
+[ext_resource type="Texture2D" uid="uid://c01ox3u8jtemx" path="res://Sunnyside_World_Assets/Elements/Crops/kale_04.png" id="4_i555i"]
+
+[resource]
+script = ExtResource("1_ty40h")
+WaterRequire = 8.0
+GrowthTime = 18.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_4i2dv"), ExtResource("2_nxum6"), ExtResource("3_tkywl"), ExtResource("4_i555i")])

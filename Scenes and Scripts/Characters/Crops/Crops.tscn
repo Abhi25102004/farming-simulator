@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://mfhb3pswunl5"]
+
+[ext_resource type="Script" path="res://Scenes and Scripts/Characters/Crops/crops.gd" id="1_qppro"]
+[ext_resource type="Resource" uid="uid://bb5b34aw5owww" path="res://Scenes and Scripts/Characters/Crops/CropTables.tres" id="2_pba33"]
+[ext_resource type="Texture2D" uid="uid://h2ke2hqrui20" path="res://Sunnyside_World_Assets/Elements/Crops/beetroot_04.png" id="2_rxj0c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p8cg"]
+radius = 4.0
+
+[node name="Crops" type="Node2D"]
+script = ExtResource("1_qppro")
+CropMap = ExtResource("2_pba33")
+
+[node name="Plant" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_rxj0c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3p8cg")
+
+[connection signal="area_entered" from="Area2D" to="." method="WateringThePlant"]
+[connection signal="area_exited" from="Area2D" to="." method="NotWateringThePlants"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://yldh02eemhm4"]
+
+[ext_resource type="Texture2D" uid="uid://dqciya6qejk31" path="res://Sunnyside_World_Assets/Elements/Crops/cabbage_01.png" id="1_ikuvj"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_itl7g"]
+[ext_resource type="Texture2D" uid="uid://sxtkaqbyhs4f" path="res://Sunnyside_World_Assets/Elements/Crops/cabbage_02.png" id="2_u3d2l"]
+[ext_resource type="Texture2D" uid="uid://crwq0xr0vjjyv" path="res://Sunnyside_World_Assets/Elements/Crops/cabbage_03.png" id="3_ni1uc"]
+[ext_resource type="Texture2D" uid="uid://byxfiyjpsg3i" path="res://Sunnyside_World_Assets/Elements/Crops/cabbage_04.png" id="4_sjnvr"]
+
+[resource]
+script = ExtResource("1_itl7g")
+WaterRequire = 6.0
+GrowthTime = 16.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_ikuvj"), ExtResource("2_u3d2l"), ExtResource("3_ni1uc"), ExtResource("4_sjnvr")])

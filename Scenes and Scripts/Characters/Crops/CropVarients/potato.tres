@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://dqr7e7vuwniow"]
+
+[ext_resource type="Texture2D" uid="uid://dt56g06hflidl" path="res://Sunnyside_World_Assets/Elements/Crops/potato_01.png" id="1_mxstf"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_v7877"]
+[ext_resource type="Texture2D" uid="uid://c40prmsows38j" path="res://Sunnyside_World_Assets/Elements/Crops/potato_02.png" id="2_xquc7"]
+[ext_resource type="Texture2D" uid="uid://bbjhl8m5m7kk7" path="res://Sunnyside_World_Assets/Elements/Crops/potato_03.png" id="3_oxcpd"]
+[ext_resource type="Texture2D" uid="uid://dn78fdca0cnfb" path="res://Sunnyside_World_Assets/Elements/Crops/potato_04.png" id="4_m7ypn"]
+
+[resource]
+script = ExtResource("1_v7877")
+WaterRequire = 7.0
+GrowthTime = 17.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_mxstf"), ExtResource("2_xquc7"), ExtResource("3_oxcpd"), ExtResource("4_m7ypn")])
