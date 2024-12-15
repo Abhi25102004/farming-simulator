@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://coqexecxyymjb"]
+
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_ifhs0"]
+[ext_resource type="Texture2D" uid="uid://dmrm8d5d64cmb" path="res://Sunnyside_World_Assets/Elements/Crops/beetroot_01.png" id="2_yr7at"]
+[ext_resource type="Texture2D" uid="uid://cdgjxr6sgm0ip" path="res://Sunnyside_World_Assets/Elements/Crops/beetroot_02.png" id="3_5c86y"]
+[ext_resource type="Texture2D" uid="uid://dcp1ckrm8n3tl" path="res://Sunnyside_World_Assets/Elements/Crops/beetroot_03.png" id="4_xqyvl"]
+[ext_resource type="Texture2D" uid="uid://h2ke2hqrui20" path="res://Sunnyside_World_Assets/Elements/Crops/beetroot_04.png" id="5_eqw6l"]
+
+[resource]
+script = ExtResource("1_ifhs0")
+WaterRequire = 6.0
+GrowthTime = 15.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("2_yr7at"), ExtResource("3_5c86y"), ExtResource("4_xqyvl"), ExtResource("5_eqw6l")])

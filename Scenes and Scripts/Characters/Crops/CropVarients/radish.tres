@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://dp6ittjni11b6"]
+
+[ext_resource type="Texture2D" uid="uid://bfrnxn0500a0h" path="res://Sunnyside_World_Assets/Elements/Crops/radish_01.png" id="1_e2rr0"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_qfs52"]
+[ext_resource type="Texture2D" uid="uid://b7eoad55xhlyf" path="res://Sunnyside_World_Assets/Elements/Crops/radish_02.png" id="2_xcm1v"]
+[ext_resource type="Texture2D" uid="uid://bxyh2kfo1e3t" path="res://Sunnyside_World_Assets/Elements/Crops/radish_03.png" id="3_2lvv6"]
+[ext_resource type="Texture2D" uid="uid://dty8lgart1cya" path="res://Sunnyside_World_Assets/Elements/Crops/radish_04.png" id="4_1ye8n"]
+
+[resource]
+script = ExtResource("1_qfs52")
+WaterRequire = 5.0
+GrowthTime = 15.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_e2rr0"), ExtResource("2_xcm1v"), ExtResource("3_2lvv6"), ExtResource("4_1ye8n")])

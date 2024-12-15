@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CropVariantTable" load_steps=12 format=3 uid="uid://bb5b34aw5owww"]
+
+[ext_resource type="Resource" uid="uid://coqexecxyymjb" path="res://Scenes and Scripts/Characters/Crops/CropVarients/beetroot.tres" id="1_hlr2j"]
+[ext_resource type="Resource" uid="uid://yldh02eemhm4" path="res://Scenes and Scripts/Characters/Crops/CropVarients/cabbage.tres" id="2_67bv7"]
+[ext_resource type="Resource" uid="uid://cktq50hcqbdwt" path="res://Scenes and Scripts/Characters/Crops/CropVarients/carrot.tres" id="3_nkfg5"]
+[ext_resource type="Resource" uid="uid://dlp7erx302se3" path="res://Scenes and Scripts/Characters/Crops/CropVarients/cauliflower.tres" id="4_kkq6i"]
+[ext_resource type="Resource" uid="uid://djkvg43ox66ke" path="res://Scenes and Scripts/Characters/Crops/CropVarients/kale.tres" id="5_nqhia"]
+[ext_resource type="Resource" uid="uid://beyjmrrg6o0fa" path="res://Scenes and Scripts/Characters/Crops/CropVarients/parsnip.tres" id="6_l58jq"]
+[ext_resource type="Resource" uid="uid://dqr7e7vuwniow" path="res://Scenes and Scripts/Characters/Crops/CropVarients/potato.tres" id="7_dk1qn"]
+[ext_resource type="Resource" uid="uid://q6jko27kud48" path="res://Scenes and Scripts/Characters/Crops/CropVarients/pumpkin.tres" id="8_4tsy5"]
+[ext_resource type="Resource" uid="uid://dp6ittjni11b6" path="res://Scenes and Scripts/Characters/Crops/CropVarients/radish.tres" id="9_7bioc"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropVariantTable.gd" id="10_mgwdw"]
+[ext_resource type="Resource" uid="uid://cgeq3y23wan0l" path="res://Scenes and Scripts/Characters/Crops/CropVarients/wheat.tres" id="10_vi6wh"]
+
+[resource]
+script = ExtResource("10_mgwdw")
+CropTable = {
+"Beetroot": ExtResource("1_hlr2j"),
+"Cabbage": ExtResource("2_67bv7"),
+"beetroot": ExtResource("1_hlr2j"),
+"cabbage": ExtResource("2_67bv7"),
+"carrot": ExtResource("3_nkfg5"),
+"cauliflower": ExtResource("4_kkq6i"),
+"kale": ExtResource("5_nqhia"),
+"parsnip": ExtResource("6_l58jq"),
+"potato": ExtResource("7_dk1qn"),
+"pumpkin": ExtResource("8_4tsy5"),
+"radish": ExtResource("9_7bioc"),
+"wheat": ExtResource("10_vi6wh")
+}

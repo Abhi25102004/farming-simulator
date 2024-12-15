@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://dlp7erx302se3"]
+
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_agw6d"]
+[ext_resource type="Texture2D" uid="uid://cd0ktkxq1ej5t" path="res://Sunnyside_World_Assets/Elements/Crops/cauliflower_01.png" id="1_u82np"]
+[ext_resource type="Texture2D" uid="uid://bfr215621hefg" path="res://Sunnyside_World_Assets/Elements/Crops/cauliflower_02.png" id="2_j3vhg"]
+[ext_resource type="Texture2D" uid="uid://dc6n0880sd7wa" path="res://Sunnyside_World_Assets/Elements/Crops/cauliflower_03.png" id="3_sqonp"]
+[ext_resource type="Texture2D" uid="uid://on4vca8xguot" path="res://Sunnyside_World_Assets/Elements/Crops/cauliflower_04.png" id="4_4payr"]
+
+[resource]
+script = ExtResource("1_agw6d")
+WaterRequire = 8.0
+GrowthTime = 18.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_u82np"), ExtResource("2_j3vhg"), ExtResource("3_sqonp"), ExtResource("4_4payr")])

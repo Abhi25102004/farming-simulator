@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://beyjmrrg6o0fa"]
+
+[ext_resource type="Texture2D" uid="uid://bil73cr36jw6j" path="res://Sunnyside_World_Assets/Elements/Crops/parsnip_01.png" id="1_ce7nj"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_u7ain"]
+[ext_resource type="Texture2D" uid="uid://rqxdoamt64ae" path="res://Sunnyside_World_Assets/Elements/Crops/parsnip_02.png" id="2_wadyw"]
+[ext_resource type="Texture2D" uid="uid://clb7p5c06htf0" path="res://Sunnyside_World_Assets/Elements/Crops/parsnip_03.png" id="3_rdebg"]
+[ext_resource type="Texture2D" uid="uid://bfkmi4g8tsa2o" path="res://Sunnyside_World_Assets/Elements/Crops/parsnip_04.png" id="4_u6mj6"]
+
+[resource]
+script = ExtResource("1_u7ain")
+WaterRequire = 5.0
+GrowthTime = 15.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_ce7nj"), ExtResource("2_wadyw"), ExtResource("3_rdebg"), ExtResource("4_u6mj6")])

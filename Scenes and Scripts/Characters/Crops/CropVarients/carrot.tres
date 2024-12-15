@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Crop" load_steps=6 format=3 uid="uid://cktq50hcqbdwt"]
+
+[ext_resource type="Texture2D" uid="uid://dix3tx5rawefg" path="res://Sunnyside_World_Assets/Elements/Crops/carrot_01.png" id="1_d1yfd"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Resources/CropsClass.gd" id="1_vmbwq"]
+[ext_resource type="Texture2D" uid="uid://boadky2d3dh73" path="res://Sunnyside_World_Assets/Elements/Crops/carrot_02.png" id="2_hwlps"]
+[ext_resource type="Texture2D" uid="uid://cc63xyryjt5dg" path="res://Sunnyside_World_Assets/Elements/Crops/carrot_03.png" id="3_hrl5x"]
+[ext_resource type="Texture2D" uid="uid://cpduwoywluwae" path="res://Sunnyside_World_Assets/Elements/Crops/carrot_04.png" id="4_tws6y"]
+
+[resource]
+script = ExtResource("1_vmbwq")
+WaterRequire = 5.0
+GrowthTime = 16.0
+GrowthSprites = Array[CompressedTexture2D]([ExtResource("1_d1yfd"), ExtResource("2_hwlps"), ExtResource("3_hrl5x"), ExtResource("4_tws6y")])
