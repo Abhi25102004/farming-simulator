@@ -49,7 +49,9 @@ func _process(delta: float) -> void:
 				queue_free()
 
 func WateringThePlant(area: Area2D) -> void:
-	isPlayerInRange = true
+	if area.get_parent().name=="Player":
+		isPlayerInRange = true
 
 func NotWateringThePlants(area: Area2D) -> void:
-	isPlayerInRange = false
+	if area.get_parent().name=="Player":
+		isPlayerInRange = false
