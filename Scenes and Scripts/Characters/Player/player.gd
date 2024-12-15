@@ -6,11 +6,18 @@ var direction = Vector2()
 var using_axe=false
 # Instance variable for animations
 var animations = {}
+@onready var health_component: Node = $HealthComponent
 
 
 
+
+var inventory:Inventory=Inventory.new()
 @export var item:Item
-var axe:Node
+@onready var inventory_dialog: InventoryDialog = $InventoryDialog
+
+
+
+var isInventoryOpen:bool=false
 
 func _ready():
 	# Initialize animations dictionary
@@ -23,13 +30,11 @@ func _ready():
 	animated_sprite.play()
 	
 	#Setting axe
-	axe=item.scene.instantiate()
-	add_child(axe)
-	
-	
-	
+	var instance=item.scene.instantiate()
+	add_child(instance)
+	inventory.add_item(item)
 
-
+	
 func _physics_process(delta: float) -> void:
 	# Handle movement and animations
 	handle_movement()
@@ -80,6 +85,14 @@ func handle_movement():
 		
 	if Input.is_action_just_pressed("use_tool"):
 		using_axe=true
+		
+	if Input.is_action_just_pressed("inventory_key"):
+		isInventoryOpen=true
+		if isInventoryOpen:
+			inventory_dialog.open(inventory)
+			inventory_dialog.show()
+			print(inventory.get_items())
+		
 	
 
 	# Normalize vector
@@ -89,11 +102,18 @@ func handle_movement():
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area.name)
 	
 	if using_axe and area.get_parent().has_method("take_damage"):
-		area.get_parent().take_damage(axe.damage)
 		using_axe=false
+		
+		health_component.take_damage(10)
+		
 	
-func cut_tree():
-	pass
+
+
+func _on_health_component_died() -> void:
+	pass # Replace with function body.
+
+
+func _on_health_component_health_changed(current_health: int, max_health: int) -> void:
+	print(current_health)

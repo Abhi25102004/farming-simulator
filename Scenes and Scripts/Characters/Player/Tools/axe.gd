@@ -3,6 +3,7 @@ extends Node2D
 @export var durability = 100
 @export var range = 50.0
 
+
 signal durability_changed(new_durability)
 
 # Function to use the axe

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://13g4kwjgb7lq"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://13g4kwjgb7lq"]
 
 [ext_resource type="PackedScene" uid="uid://dfmweqlgw13hx" path="res://Scenes and Scripts/Characters/Player/Tools/Axe.tscn" id="1_7y3g6"]
+[ext_resource type="Texture2D" uid="uid://bbcacl55jntc6" path="res://Sunnyside_World_Assets/UI/axe.png" id="1_65phq"]
 [ext_resource type="Script" path="res://Scenes and Scripts/items.gd" id="1_yv6kt"]
 
 [resource]
 script = ExtResource("1_yv6kt")
 name = "Axe"
 scene = ExtResource("1_7y3g6")
+icon = ExtResource("1_65phq")
