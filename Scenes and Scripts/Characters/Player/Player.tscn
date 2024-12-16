@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bbsmu0fgvtv67"]
+[gd_scene load_steps=28 format=3 uid="uid://bbsmu0fgvtv67"]
 
 [ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/player.gd" id="1_86he0"]
 [ext_resource type="Resource" uid="uid://13g4kwjgb7lq" path="res://Scenes and Scripts/models/items/axe.tres" id="2_jmyak"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jsa54deha18" path="res://Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png" id="3_eaavl"]
 [ext_resource type="PackedScene" uid="uid://bsveh0m46ws16" path="res://Scenes and Scripts/Components/health_component.tscn" id="5_1m2lr"]
 [ext_resource type="PackedScene" uid="uid://dvf3xqbmxcmfq" path="res://Scenes and Scripts/Elements/Inventory/inventory_dialog.tscn" id="6_tpghf"]
+[ext_resource type="PackedScene" uid="uid://qviteqdp4h14" path="res://Scenes and Scripts/Components/hurt_box_component.tscn" id="7_ylfql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12uxb"]
 atlas = ExtResource("2_yiw8i")
@@ -142,34 +143,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_w70x6"]
 radius = 9.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_424qb"]
-radius = 7.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhdcg"]
+radius = 11.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-15, -12)
 script = ExtResource("1_86he0")
 item = ExtResource("2_jmyak")
 metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_5lhi6")
-animation = &"idle"
-frame = 4
-frame_progress = 0.511145
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_w70x6")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.625, 2.625)
-
-[node name="Area2D" type="Area2D" parent="." groups=["CuttableTrees"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_424qb")
-
-[node name="HealthComponent" parent="." instance=ExtResource("5_1m2lr")]
 
 [node name="InventoryDialog" parent="." instance=ExtResource("6_tpghf")]
 visible = false
@@ -178,6 +159,26 @@ offset_top = -92.0
 offset_right = 162.0
 offset_bottom = 90.0
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5lhi6")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_w70x6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.625, 2.625)
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_1m2lr")]
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_ylfql")]
+unique_name_in_owner = true
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("CircleShape2D_uhdcg")
+
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="hit" from="HurtBoxComponent" to="." method="_on_hurt_box_component_hit"]

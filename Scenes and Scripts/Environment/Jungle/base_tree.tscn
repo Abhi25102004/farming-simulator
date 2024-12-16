@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkivuisd54dvy"]
+[gd_scene load_steps=11 format=3 uid="uid://dkivuisd54dvy"]
 
 [ext_resource type="Script" path="res://Scenes and Scripts/Environment/Jungle/base_tree.gd" id="1_4w8yc"]
 [ext_resource type="Texture2D" uid="uid://coailcyntjk6n" path="res://Sunnyside_World_Assets/Elements/Plants/spr_deco_tree_01_strip4.png" id="1_jh703"]
+[ext_resource type="PackedScene" uid="uid://bsveh0m46ws16" path="res://Scenes and Scripts/Components/health_component.tscn" id="3_64wmi"]
+[ext_resource type="PackedScene" uid="uid://qviteqdp4h14" path="res://Scenes and Scripts/Components/hurt_box_component.tscn" id="4_yv40k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cnbf1"]
 atlas = ExtResource("1_jh703")
@@ -39,17 +41,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o107t"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_crk6l"]
+radius = 12.0416
 
 [node name="BaseTree" type="Node2D" groups=["cut_tree"]]
 script = ExtResource("1_4w8yc")
-health = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_snvos")
 
-[node name="BaseTreeHB" type="Area2D" parent="."]
+[node name="HealthComponent" parent="." instance=ExtResource("3_64wmi")]
 
-[node name="HitBox" type="CollisionShape2D" parent="BaseTreeHB"]
-position = Vector2(0, 5)
-shape = SubResource("CircleShape2D_o107t")
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_yv40k")]
+damage = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_crk6l")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="hit" from="HurtBoxComponent" to="." method="_on_hurt_box_component_hit"]

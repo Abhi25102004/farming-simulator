@@ -6,7 +6,19 @@ var direction = Vector2()
 var using_axe=false
 # Instance variable for animations
 var animations = {}
+@onready var root: StateChart = %Root
+
+
+
+
+#Loading the statechart
+
+
+
+#Components loading
 @onready var health_component: Node = $HealthComponent
+@onready var hurt_box_component: Area2D = $HurtBoxComponent
+
 
 
 
@@ -100,13 +112,6 @@ func handle_movement():
 		direction = direction.normalized()
 	velocity = direction * speed
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	
-	if using_axe and area.get_parent().has_method("take_damage"):
-		using_axe=false
-		
-		health_component.take_damage(10)
 		
 		
 func _on_health_component_died() -> void:
@@ -115,3 +120,9 @@ func _on_health_component_died() -> void:
 
 func _on_health_component_health_changed(current_health: int, max_health: int) -> void:
 	print(current_health)
+
+
+func _on_hurt_box_component_hit(target: Node) -> void:
+	if target == health_component:
+		print("Hurtbox hit the player!")
+		

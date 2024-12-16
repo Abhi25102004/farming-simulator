@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://e1iv1m2r8c3d"]
+[gd_scene load_steps=5 format=3 uid="uid://e1iv1m2r8c3d"]
 
 [ext_resource type="PackedScene" uid="uid://bbsmu0fgvtv67" path="res://Scenes and Scripts/Characters/Player/Player.tscn" id="1_hkc5q"]
 [ext_resource type="Script" path="res://Scenes and Scripts/world.gd" id="1_vhsob"]
 [ext_resource type="PackedScene" uid="uid://mfhb3pswunl5" path="res://Scenes and Scripts/Characters/Crops/Crops.tscn" id="3_d6hlh"]
+[ext_resource type="PackedScene" uid="uid://dkivuisd54dvy" path="res://Scenes and Scripts/Environment/Jungle/base_tree.tscn" id="4_qjcqe"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_vhsob")
@@ -12,3 +13,6 @@ position = Vector2(378, 159)
 
 [node name="Crops" parent="." instance=ExtResource("3_d6hlh")]
 position = Vector2(287, 151)
+
+[node name="BaseTree" parent="." instance=ExtResource("4_qjcqe")]
+position = Vector2(333, 193)
