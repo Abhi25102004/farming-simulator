@@ -1,16 +1,28 @@
 extends Node2D
 
-@export var health:int
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var hurt_box_component: Area2D = $HurtBoxComponent
 
 
 
-func take_damage(damage: int):
-	health -= damage
-	print("Tree health: ", health)
+func _ready():
+	health_component.take_damage(30)
 
-	if health <= 0:
-		chop_down()
-		
-func chop_down():
-	print("Tree chopped down!")
-	queue_free()
+	_on_hurt_box_component_hit(health_component)
+
+func _on_hurt_box_component_hit(target: Node) -> void:
+	print(target)
+	
+	
+
+
+
+func _on_health_component_died() -> void:
+	pass # Replace with function body.
+	
+	
+
+
+
+func _on_health_component_health_changed(current_health: int, max_health: int) -> void:
+	pass # Replace with function body.
