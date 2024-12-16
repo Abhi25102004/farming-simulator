@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bjcfamtkjqkf4"]
+
+[ext_resource type="Script" path="res://Scenes and Scripts/items.gd" id="1_0q3vg"]
+[ext_resource type="Texture2D" uid="uid://bbqm4bdwr5pi8" path="res://Sunnyside_World_Assets/Elements/Crops/potato_05.png" id="1_not8w"]
+[ext_resource type="PackedScene" uid="uid://mfhb3pswunl5" path="res://Scenes and Scripts/Characters/Crops/Crops.tscn" id="2_yc74b"]
+
+[resource]
+script = ExtResource("1_0q3vg")
+name = "Potato"
+scene = ExtResource("2_yc74b")
+icon = ExtResource("1_not8w")

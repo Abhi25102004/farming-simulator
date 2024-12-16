@@ -10,7 +10,6 @@ var animations = {}
 
 
 
-
 var inventory:Inventory=Inventory.new()
 @export var item:Item
 @onready var inventory_dialog: InventoryDialog = $InventoryDialog
@@ -92,6 +91,7 @@ func handle_movement():
 			inventory_dialog.open(inventory)
 			inventory_dialog.show()
 			print(inventory.get_items())
+			
 		
 	
 
@@ -108,11 +108,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 		health_component.take_damage(10)
 		
-	
-
-
+		
 func _on_health_component_died() -> void:
-	pass # Replace with function body.
+	pass
 
 
 func _on_health_component_health_changed(current_health: int, max_health: int) -> void:
