@@ -1,12 +1,17 @@
+
 extends Node
+class_name State
 
 
-func enter(character: CharacterBody2D):
+@warning_ignore("unused_signal")
+signal state_transition
+@export var animated_sprite: AnimatedSprite2D
+
+func Enter():
 	pass
 
-
-func update(delta: float, character: CharacterBody2D):
+func Exit():
 	pass
 
-func exit(character: CharacterBody2D):
+func Update(_delta: float):
 	pass
