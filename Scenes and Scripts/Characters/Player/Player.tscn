@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bbsmu0fgvtv67"]
+[gd_scene load_steps=31 format=3 uid="uid://bbsmu0fgvtv67"]
 
 [ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/player.gd" id="1_86he0"]
 [ext_resource type="Resource" uid="uid://13g4kwjgb7lq" path="res://Scenes and Scripts/models/items/axe.tres" id="2_jmyak"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bsveh0m46ws16" path="res://Scenes and Scripts/Components/health_component.tscn" id="5_1m2lr"]
 [ext_resource type="PackedScene" uid="uid://dvf3xqbmxcmfq" path="res://Scenes and Scripts/Elements/Inventory/inventory_dialog.tscn" id="6_tpghf"]
 [ext_resource type="PackedScene" uid="uid://qviteqdp4h14" path="res://Scenes and Scripts/Components/hurt_box_component.tscn" id="7_ylfql"]
+[ext_resource type="PackedScene" uid="uid://iok7lo12420j" path="res://Scenes and Scripts/Components/FSM.tscn" id="8_obd38"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/FSM/on_player_idle.gd" id="9_4ehij"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/FSM/on_player_moving.gd" id="10_h776o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12uxb"]
 atlas = ExtResource("2_yiw8i")
@@ -178,6 +181,17 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
 shape = SubResource("CircleShape2D_uhdcg")
+
+[node name="Fsm" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_obd38")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Fsm" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("9_4ehij")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Walk" type="Node" parent="Fsm" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("10_h776o")
+animated_sprite = NodePath("../../AnimatedSprite2D")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

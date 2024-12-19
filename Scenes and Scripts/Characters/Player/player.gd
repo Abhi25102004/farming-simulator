@@ -1,128 +1,49 @@
 extends CharacterBody2D
 
-@export var speed = 200.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-var direction = Vector2()
-var using_axe=false
-# Instance variable for animations
-var animations = {}
-@onready var root: StateChart = %Root
-
-
-
-
-#Loading the statechart
-
-
-
-#Components loading
+@export var speed = 200.0
 @onready var health_component: Node = $HealthComponent
 @onready var hurt_box_component: Area2D = $HurtBoxComponent
-
-
-
-
-var inventory:Inventory=Inventory.new()
-@export var item:Item
+@onready var fsm: FiniteStateMachine = $Fsm
 @onready var inventory_dialog: InventoryDialog = $InventoryDialog
 
-
-
-var isInventoryOpen:bool=false
+@export var item: Item
+var inventory: Inventory = Inventory.new()
+var isInventoryOpen: bool = false
 
 func _ready():
-	# Initialize animations dictionary
-	animations = {
-		"idle": Callable(self, "handle_idle"),
-		"walk": Callable(self, "handle_walk")
-	}
-	# Set initial animation
-	set_animation("idle")
-	animated_sprite.play()
-	
-	#Setting axe
-	var instance=item.scene.instantiate()
+	# Initialize the FSM and pass necessary references
+		# Start FSM with the initial state
+	if fsm.initial_state:
+		fsm.initial_state.Enter()
+
+	# Equip initial item and add it to inventory
+	var instance = item.scene.instantiate()
 	add_child(instance)
 	inventory.add_item(item)
 
-	
 func _physics_process(delta: float) -> void:
-	# Handle movement and animations
-	handle_movement()
-	handle_animations()
-	move_and_slide()
+	# Delegate behavior to FSM
+	fsm._process(delta)
 
+	# Handle additional actions like inventory
+	handle_inventory()
 
-
-func set_animation(animation_name):
-	if animation_name in animations:
-		animations[animation_name].call()
-	else:
-		print("Animation not found: ", animation_name)
-
-# Animation handlers
-
-
-
-func handle_idle():
-	animated_sprite.animation = "idle"
-	
-
-func handle_walk():
-	animated_sprite.animation = "walk"
-	animated_sprite.flip_h = direction.x < 0
-
-# Handle animations based on current direction
-func handle_animations():
-	if direction == Vector2.ZERO:
-		set_animation("idle")
-	else:
-		set_animation("walk")
-
-# Handle movement and input
-func handle_movement():
-	direction = Vector2()
-
-	# Get input direction
-	if Input.is_action_pressed("ui_right"):
-		direction.x += 1
-	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		direction.y += 1
-	if Input.is_action_pressed("ui_up"):
-		direction.y -= 1
-		
-		
-	if Input.is_action_just_pressed("use_tool"):
-		using_axe=true
-		
+func handle_inventory():
 	if Input.is_action_just_pressed("inventory_key"):
-		isInventoryOpen=true
+		isInventoryOpen = !isInventoryOpen
 		if isInventoryOpen:
 			inventory_dialog.open(inventory)
 			inventory_dialog.show()
-			print(inventory.get_items())
-			
-		
-	
+		else:
+			inventory_dialog.hide()
 
-	# Normalize vector
-	if direction != Vector2.ZERO:
-		direction = direction.normalized()
-	velocity = direction * speed
-
-		
-		
 func _on_health_component_died() -> void:
-	pass
-
+	print("Player has died.")
 
 func _on_health_component_health_changed(current_health: int, max_health: int) -> void:
-	print(current_health)
-
+	print("Health changed: ", current_health, "/", max_health)
 
 func _on_hurt_box_component_hit(target: Node) -> void:
 	if target == health_component:
 		print("Hurtbox hit the player!")
-		
