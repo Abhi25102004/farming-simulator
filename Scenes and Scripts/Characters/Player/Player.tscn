@@ -1,15 +1,57 @@
-[gd_scene load_steps=31 format=3 uid="uid://bbsmu0fgvtv67"]
+[gd_scene load_steps=43 format=3 uid="uid://bbsmu0fgvtv67"]
 
 [ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/player.gd" id="1_86he0"]
 [ext_resource type="Resource" uid="uid://13g4kwjgb7lq" path="res://Scenes and Scripts/models/items/axe.tres" id="2_jmyak"]
 [ext_resource type="Texture2D" uid="uid://b18htf32j4s2v" path="res://Sunnyside_World_Assets/Characters/Human/IDLE/base_idle_strip9.png" id="2_yiw8i"]
 [ext_resource type="Texture2D" uid="uid://b2jsa54deha18" path="res://Sunnyside_World_Assets/Characters/Human/WALKING/base_walk_strip8.png" id="3_eaavl"]
+[ext_resource type="Texture2D" uid="uid://3pktev1t80qt" path="res://Sunnyside_World_Assets/Characters/Human/AXE/base_axe_strip10.png" id="4_uktvx"]
 [ext_resource type="PackedScene" uid="uid://bsveh0m46ws16" path="res://Scenes and Scripts/Components/health_component.tscn" id="5_1m2lr"]
 [ext_resource type="PackedScene" uid="uid://dvf3xqbmxcmfq" path="res://Scenes and Scripts/Elements/Inventory/inventory_dialog.tscn" id="6_tpghf"]
 [ext_resource type="PackedScene" uid="uid://qviteqdp4h14" path="res://Scenes and Scripts/Components/hurt_box_component.tscn" id="7_ylfql"]
 [ext_resource type="PackedScene" uid="uid://iok7lo12420j" path="res://Scenes and Scripts/Components/FSM.tscn" id="8_obd38"]
 [ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/FSM/on_player_idle.gd" id="9_4ehij"]
 [ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/FSM/on_player_moving.gd" id="10_h776o"]
+[ext_resource type="Script" path="res://Scenes and Scripts/Characters/Player/FSM/on_player_axe.gd" id="12_bvtq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yx73"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(0, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auim1"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(96, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2kas"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(192, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57y78"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(288, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aue7j"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(384, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yybj3"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(480, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guwh1"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(576, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2afh4"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(672, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_885fw"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(768, 0, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6w1q"]
+atlas = ExtResource("4_uktvx")
+region = Rect2(864, 0, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_12uxb"]
 atlas = ExtResource("2_yiw8i")
@@ -83,6 +125,41 @@ region = Rect2(672, 0, 96, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7yx73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auim1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2kas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57y78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aue7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yybj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guwh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2afh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_885fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6w1q")
+}],
+"loop": true,
+"name": &"axe",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_12uxb")
 }, {
 "duration": 1.0,
@@ -150,6 +227,8 @@ radius = 9.0
 radius = 11.0
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 100
+y_sort_enabled = true
 position = Vector2(-15, -12)
 script = ExtResource("1_86he0")
 item = ExtResource("2_jmyak")
@@ -164,7 +243,7 @@ offset_bottom = 90.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5lhi6")
-animation = &"idle"
+animation = &"axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -191,8 +270,18 @@ animated_sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Walk" type="Node" parent="Fsm" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("10_h776o")
+speed = 50.0
 animated_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Axe" type="Node" parent="Fsm" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("12_bvtq6")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Timer" type="Timer" parent="Fsm/Axe"]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="hit" from="HurtBoxComponent" to="." method="_on_hurt_box_component_hit"]
+[connection signal="timeout" from="Fsm/Axe/Timer" to="Fsm/Axe" method="_on_timer_timeout"]

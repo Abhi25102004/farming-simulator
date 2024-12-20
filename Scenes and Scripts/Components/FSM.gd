@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 	if current_state:
 		current_state.Update(delta)
 
+
 func change_state(last_state: State, new_state_name: String) -> void:
 	if last_state != current_state:
 		return
