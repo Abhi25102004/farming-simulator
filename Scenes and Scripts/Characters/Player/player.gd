@@ -16,7 +16,6 @@ func _ready():
 		# Start FSM with the initial state
 	if fsm.initial_state:
 		fsm.initial_state.Enter()
-
 	# Equip initial item and add it to inventory
 	var instance = item.scene.instantiate()
 	add_child(instance)
@@ -25,6 +24,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Delegate behavior to FSM
 	fsm._process(delta)
+	print(fsm.current_state)
 
 	# Handle additional actions like inventory
 	handle_inventory()
